@@ -1,0 +1,17 @@
+[Unit]
+Description=Electroneum Full Node
+After=network.target
+
+[Service]
+User=cred
+Group=cred
+WorkingDirectory=~
+
+Type=forking
+PIDFile=/var/run/credd.pid
+
+ExecStart=/usr/bin/credd --config-file /etc/credd.conf \
+    --detach --pidfile /var/run/credd.pid
+
+[Install]
+WantedBy=multi-user.target
